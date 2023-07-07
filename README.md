@@ -1,3 +1,5 @@
+Para ver o site hospedado na Versel https://igniteshop-3jnmj6imf-lzabreu.vercel.app/?vercelToolbarCode=nb9GRae8-hETLQw
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
