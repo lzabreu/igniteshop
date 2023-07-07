@@ -45,8 +45,8 @@ export async function getData() {
 
 export async function checkout(cartItems: ProductType[]) {
 	const successUrl =
-		'/success?session_id={CHECKOUT_SESSION_ID}'
-	const cancelUrl = 'http://localhost:3000/cancel'
+		'https://igniteshop-ten.vercel.app/success?session_id={CHECKOUT_SESSION_ID}'
+	const cancelUrl = 'https://igniteshop-ten.vercel.app'
 
 	const checkoutSession = await stripe.checkout.sessions.create({
 		success_url: successUrl,
