@@ -45,7 +45,7 @@ export async function getData() {
 
 export async function checkout(cartItems: ProductType[]) {
 	const successUrl =
-		'http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}'
+		'/success?session_id={CHECKOUT_SESSION_ID}'
 	const cancelUrl = 'http://localhost:3000/cancel'
 
 	const checkoutSession = await stripe.checkout.sessions.create({
