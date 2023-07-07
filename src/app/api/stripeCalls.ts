@@ -22,7 +22,7 @@ export async function getData() {
 		}
 	})
 
-	return data
+	return data  
 }
 
 export async function checkout(cartItems: ProductType[]) {
