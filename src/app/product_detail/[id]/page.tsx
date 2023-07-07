@@ -1,39 +1,39 @@
 'use client'
 import { useState } from 'react'
 import Image from 'next/image'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 
 import { useCart } from '@/hooks/useCart'
 import { formatNumber } from '@/utils/formatNumber'
+import { Header } from '@/components/Header'
 
-export default async function ProductDetail() {
-	const { productsList } = useCart()
+export default function ProductDetail() {
+	const router = useRouter()
+	const { productsList, addToCart, checkItemExists } = useCart()
 	const params = useParams()
 	const product = productsList.filter((product) => product.id === params.id)
-	console.log(product)
-
 	const [isSending, setIsSending] = useState(false)
-	// const product = getProductById(params.id)
-	// const [productDetail] = await Promise.all([product])
-	const priceBR = formatNumber(Number(product[0].price))
+	const priceBR = formatNumber(Number(product[0]?.price))
 
-	// async function handleBuyProduct() {
-	// 	try {
-	// 		setIsSending(true)
-	// 		const checkoutUrl = await checkout(productDetail.priceId)
-	// 		const checkUrl = checkoutUrl.url as string
-	// 		if (checkUrl) {
-	// 			window.location.href = checkUrl
-	// 		}
-	// 	} catch (error) {
-	// 		setIsSending(false)
-	// 		alert(' Não foi possível realizar o pagamento')
-	// 	}
-	// }
-	function handleAddToCart() {}
+	function handleAddToCart() {
+
+		const exists = checkItemExists(product[0].id)
+		if (!exists) {
+			setIsSending(true)
+			addToCart(product[0])
+			setIsSending(false)
+			router.replace('/')
+			//window.location.href = '/'
+		} else{
+			alert('Produto já adicionado')
+		}
+	}
 
 	return (
 		<main className='flex items-start justify-center gap-16 mx-32 my-auto h-[35rem]'>
+			<header className='fixed top-0 left-0 right-0 z-10'>
+						<Header />
+					</header>
 			<div className='flex items-center justify-center h-full overflow-hidden rounded-lg bg-backGradient'>
 				<Image
 					priority={true}

@@ -12,7 +12,7 @@ export function Product({ product }: ProductProps) {
 	const priceBR = formatNumber(Number(product.price))
 
 	return (
-		<div className='cursor-pointer relative flex flex-col bg-backGradient w-[35rem] rounded-lg overflow-hidden group'>
+		<div className='relative flex flex-col bg-backGradient w-[35rem] rounded-lg overflow-hidden group'>
 			<div className='flex items-center justify-center'>
 				<Image
 					priority={true}
@@ -30,7 +30,7 @@ export function Product({ product }: ProductProps) {
 					</p>
 					<span className='text-2xl font-bold text-Brand/Light'>{priceBR}</span>
 				</div>
-				<button className='flex items-center justify-center rounded-md w-14 h-14 bg-Brand/Principal text-Grayscale/White hover:bg-Brand/Light'>
+				<button className='flex items-center justify-center rounded-md cursor-pointer  w-14 h-14 bg-Brand/Principal text-Grayscale/White hover:bg-Brand/Light'>
 					<Handbag size={32} weight='bold' />
 				</button>
 			</footer>

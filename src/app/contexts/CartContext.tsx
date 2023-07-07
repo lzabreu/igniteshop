@@ -18,6 +18,7 @@ interface CartContextData {
 	addToCart: (product: ProductType) => void
 	removeCartItem: (productId: string) => void
 	checkItemExists: (productId: string) => boolean
+	changeItemQuantity: (productId: string, quantity: number) => void
 	getProducts: () => Promise<void>
 }
 
@@ -43,13 +44,15 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 	}, [getProducts])
 
 	const cartTotal = cartItems.reduce((total, product) => {
-		return total + product.price
+		return (total + (product.price * product.quantity!))
+	}, 0)
+	const totalItems = cartItems.reduce((total, product) => {
+		return ( total +product.quantity!)
 	}, 0)
 
-	const totalItems = cartItems.length
-console.log(totalItems)
 
 	function addToCart(product: ProductType) {
+		product.quantity = 1
 		setCartItems((state) => [...state, product])
 	}
 
@@ -61,6 +64,18 @@ console.log(totalItems)
 		return cartItems.some((product) => product.id === productId)
 	}
 
+	function changeItemQuantity(productId: string, quantity: number) {
+		const newCart = cartItems.map((product) => {
+			if (product.id === productId && product.quantity !== null) {
+				product.quantity = quantity
+			}
+			return product
+		})
+		if(newCart.length > 0){
+			setCartItems(newCart)
+		}
+	}
+
 	return (
 		<CartContext.Provider
 			value={{
@@ -69,9 +84,10 @@ console.log(totalItems)
 				addToCart,
 				getProducts,
 				removeCartItem,
+				checkItemExists,
+				changeItemQuantity,
 				cartTotal,
 				totalItems,
-				checkItemExists,
 			}}
 		>
 			{children}

@@ -6,4 +6,5 @@ export interface ProductType {
 	price: number
 	priceId:string
 	description: string | null
+	quantity:number | null
 }

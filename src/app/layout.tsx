@@ -20,10 +20,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 				<body
 					className={`${roboto.className} h-screen w-screen bg-Grayscale/Background relative`}
 				>
-					<header className='fixed top-0 left-0 right-0 '>
-						<Header />
-					</header>
-					<div className='absolute top-32'>{children}</div>
+					
+					<div className='absolute top-32 z-0'>{children}</div>
 				</body>
 			</CartContextProvider>
 		</html>
