@@ -12,7 +12,6 @@ export function Cart() {
 				window.location.href = checkUrl
 			}
 		} catch (error) {
-			console.log(error)
 			alert(' Não foi possível realizar o pagamento')
 		}
 	}

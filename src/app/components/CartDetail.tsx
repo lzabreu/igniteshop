@@ -16,16 +16,14 @@ export function CartDetail({ product }: CartProps) {
 	}
 
 	function handleQuantityPlus() {
-		if (product.quantity !== null &&product.quantity >= 0  ) {
+		if (product.quantity !== null && product.quantity >= 0) {
 			changeItemQuantity(product.id, product.quantity + 1)
 		}
-		console.log(product.quantity)
 	}
 	function handleQuantityMinus() {
 		if (product.quantity !== null && product.quantity > 1) {
 			changeItemQuantity(product.id, product.quantity - 1)
 		}
-		console.log(product.quantity)
 	}
 
 	const priceBR = formatNumber(Number(product?.price))
