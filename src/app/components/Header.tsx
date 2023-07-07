@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Image from 'next/image'
-import Logotipo from '@/assets/logo.svg'
+import Logotipo from '@/assets/Logotipo.svg'
 import { Handbag, X } from 'phosphor-react'
 import { useCart } from '@/hooks/useCart'
 import { Cart } from './Cart'
