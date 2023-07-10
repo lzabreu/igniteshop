@@ -1,4 +1,4 @@
-
+'use client'
 import { getData } from '@/api/stripeCalls'
 import { ProductType } from '@/types/ProductType'
 import {
