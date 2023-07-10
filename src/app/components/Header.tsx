@@ -19,7 +19,7 @@ export function Header() {
 	return (
 		<div className='relative flex flex-col'>
 			<div className='flex sticky items-center justify-between mt-10 mb-8 ml-32 mr-28 z-10'>
-				<Image src={Logotipo} alt='Logotipo' width={130} />
+				<Image src={Logotipo} alt='Logotipo' width={130} priority={true} />
 				<div className='relative'>
 					<div
 						onClick={pushCart}

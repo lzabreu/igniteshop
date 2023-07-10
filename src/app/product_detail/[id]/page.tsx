@@ -16,7 +16,6 @@ export default function ProductDetail() {
 	const priceBR = formatNumber(Number(product[0]?.price))
 
 	function handleAddToCart() {
-
 		const exists = checkItemExists(product[0].id)
 		if (!exists) {
 			setIsSending(true)
@@ -24,16 +23,16 @@ export default function ProductDetail() {
 			setIsSending(false)
 			router.replace('/')
 			//window.location.href = '/'
-		} else{
+		} else {
 			alert('Produto já adicionado')
 		}
 	}
 
 	return (
 		<main className='flex items-start justify-center gap-16 mx-32 my-auto h-[35rem]'>
-			<header className='fixed top-0 left-0 right-0 z-10'>
-						<Header />
-					</header>
+			<header className='fixed top-0 left-0 right-0 z-10 bg-Grayscale/Background'>
+				<Header />
+			</header>
 			<div className='flex items-center justify-center h-full overflow-hidden rounded-lg bg-backGradient'>
 				<Image
 					priority={true}

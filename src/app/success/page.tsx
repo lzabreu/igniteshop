@@ -1,4 +1,3 @@
-'use clent'
 import { success } from '@/api/stripeCalls'
 import Link from 'next/link'
 import Image from 'next/image'

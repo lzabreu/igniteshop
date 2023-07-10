@@ -1,8 +1,7 @@
 import { ReactNode } from 'react'
 import { Roboto } from 'next/font/google'
-import { Header } from './components/Header'
-import '@/globals.css'
-import { CartContextProvider } from './contexts/CartContext'
+import './globals.css'
+import { Providers } from './providers/providers'
 
 const roboto = Roboto({
 	subsets: ['latin'],
@@ -16,14 +15,13 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
 		<html lang='pt-BR'>
-			<CartContextProvider>
+			<Providers>
 				<body
 					className={`${roboto.className} h-screen w-screen bg-Grayscale/Background relative`}
 				>
-					
 					<div className='absolute top-32 z-0'>{children}</div>
 				</body>
-			</CartContextProvider>
+			</Providers>
 		</html>
 	)
 }

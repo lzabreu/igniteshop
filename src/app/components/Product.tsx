@@ -17,7 +17,7 @@ export function Product({ product }: ProductProps) {
 				<Image
 					priority={true}
 					src={product.image}
-					alt='Logotipo'
+					alt={product.description!}
 					width={520}
 					height={520}
 					className='object-cover transition-all duration-300 group-hover:scale-90 group-hover:-translate-y-[1rem]'

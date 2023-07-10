@@ -1,4 +1,3 @@
-'use client'
 
 import { getData } from '@/api/stripeCalls'
 import { ProductType } from '@/types/ProductType'
@@ -44,37 +43,45 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 	}, [getProducts])
 
 	const cartTotal = cartItems.reduce((total, product) => {
-		return (total + (product.price * product.quantity!))
+		return total + product.price * product.quantity!
 	}, 0)
 	const totalItems = cartItems.reduce((total, product) => {
-		return ( total +product.quantity!)
+		return total + product.quantity!
 	}, 0)
 
+	const addToCart = useCallback(
+		(product: ProductType) => {
+			product.quantity = 1
+			setCartItems((state) => [...state, product])
+		},
+		[cartItems]
+	)
 
-	function addToCart(product: ProductType) {
-		product.quantity = 1
-		setCartItems((state) => [...state, product])
-	}
-
-	function removeCartItem(productId: string) {
-		setCartItems((state) => state.filter((item) => item.id !== productId))
-	}
+	const removeCartItem = useCallback(
+		(productId: string) => {
+			setCartItems((state) => state.filter((item) => item.id !== productId))
+		},
+		[cartItems]
+	)
 
 	function checkItemExists(productId: string) {
 		return cartItems.some((product) => product.id === productId)
 	}
 
-	function changeItemQuantity(productId: string, quantity: number) {
-		const newCart = cartItems.map((product) => {
-			if (product.id === productId && product.quantity !== null) {
-				product.quantity = quantity
+	const changeItemQuantity = useCallback(
+		(productId: string, quantity: number) => {
+			const newCart = cartItems.map((product) => {
+				if (product.id === productId && product.quantity !== null) {
+					product.quantity = quantity
+				}
+				return product
+			})
+			if (newCart.length > 0) {
+				setCartItems(newCart)
 			}
-			return product
-		})
-		if(newCart.length > 0){
-			setCartItems(newCart)
-		}
-	}
+		},
+		[cartItems]
+	)
 
 	return (
 		<CartContext.Provider
